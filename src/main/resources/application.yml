@@ -1,0 +1,17 @@
+server:
+  port: 9100
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_schema?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&useAffectedRows=true&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  redis:
+    # Redis 单机单实例
+    database: 0
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis
+
