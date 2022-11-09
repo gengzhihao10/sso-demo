@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import sso.demo.DO.UserDO;
 import sso.demo.api.base.RestResponse;
 import sso.demo.api.user.input.RestUserCommand;
-import sso.demo.api.user.output.UserOutput;
+import sso.demo.api.user.output.UserCommandOutput;
 import sso.demo.converter.UserConverter;
 import sso.demo.enums.ResponseCodeEnum;
 import sso.demo.repository.UserRepository;
@@ -28,14 +28,7 @@ public class UserServcie {
     @Autowired
     private RedisUtil redisUtil;
 
-//    public  queryUserById(Long id){
-//        //todo 完善逻辑，增加出入参的转换
-//        userRepository.getById(id);
-//        RestUserCommand restUserCommand = new RestUserCommand();
-//        RestUserPageQuery restUserPageQuery = new RestUserPageQuery();
-//    }
-
-    public RestResponse<UserOutput> insertUser(RestUserCommand restUserCommand){
+    public RestResponse<UserCommandOutput> insertUser(RestUserCommand restUserCommand){
 
         UserDO userDO = userConverter.convert(restUserCommand);
 

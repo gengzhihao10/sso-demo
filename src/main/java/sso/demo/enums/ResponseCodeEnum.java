@@ -13,6 +13,9 @@ public enum ResponseCodeEnum {
     INPUT_IS_NULL(10000,"入参为空"),
     CREATE_SNOWFLAKE_ID_FAILED(10100,"构造雪花算法id失败"),
 
+    USER_IS_NOT_EXIST(10200,"用户不存在"),
+    USER_DATA_WRONG(10201,"用户数据错误"),
+
     ;
 
     /**

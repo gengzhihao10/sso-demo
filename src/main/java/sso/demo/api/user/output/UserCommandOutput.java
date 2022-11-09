@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserOutput implements Serializable {
+public class UserCommandOutput implements Serializable {
     private static final long serialVersionUID = 5529238285692559406L;
 
     /**

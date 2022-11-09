@@ -8,21 +8,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sso.demo.api.base.RestResponse;
+import sso.demo.api.token.input.RestTokenCommand;
+import sso.demo.api.token.output.TokenCommandOutput;
 import sso.demo.api.user.input.RestUserCommand;
 import sso.demo.api.user.output.UserCommandOutput;
-import sso.demo.service.UserServcie;
+import sso.demo.service.TokenService;
 
-@Api(value = "用户操作接口")
-@RequestMapping("/user")
+@Api(value = "token操作接口")
+@RequestMapping("/token")
 @RestController
-public class UserController {
+public class TokenController {
 
     @Autowired
-    private UserServcie userServcie;
+    private TokenService tokenService;
 
-    @ApiOperation(value = "新增用户")
-    @PostMapping("/insert")
-    public RestResponse<UserCommandOutput> insertUser(@RequestBody RestUserCommand restUserCommand){
-        return userServcie.insertUser(restUserCommand);
+
+    @ApiOperation(value = "生成token")
+    @PostMapping("/generate")
+    public RestResponse<TokenCommandOutput> generateToken(@RequestBody RestTokenCommand restTokenCommand){
+        return tokenService.generateToken(restTokenCommand);
     }
 }
