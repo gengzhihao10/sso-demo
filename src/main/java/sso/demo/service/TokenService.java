@@ -58,14 +58,12 @@ public class TokenService {
         UserDO userDO = userDOS.get(0);
         String token = jwtUtil.createToken(userDO.getId());
 
-        //token放入缓存
+        //构造响应
         TokenCommandOutput tokenCommandOutput = new TokenCommandOutput();
         UserInfoParam userInfoParam = userConverter.convert(userDO);
         tokenCommandOutput.setUserInfoParam(userInfoParam);
         tokenCommandOutput.setToken(token);
         log.info("当前token信息为 {}", JsonUtil.obj2Str(tokenCommandOutput));
-
-        redisUtil.set(RedisConsts.TOKEN_PRE+userDO.getId(), tokenCommandOutput, Long.valueOf(expiration));
 
         return RestResponse.ok(tokenCommandOutput);
     }
