@@ -3,9 +3,6 @@ package sso.demo;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-//import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 
 /**
@@ -14,8 +11,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * @description 启动类
 **/
 
-@SpringBootApplication(scanBasePackages = {"sso.demo.*"})
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 7200)
+@SpringBootApplication
+//@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 7200)
 //@EnableConfigurationProperties
 public class SSOApplication {
 

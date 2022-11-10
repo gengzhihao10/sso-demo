@@ -8,7 +8,7 @@ import sso.demo.api.base.RestResponse;
 import sso.demo.api.user.input.RestUserCommand;
 import sso.demo.api.user.output.UserCommandOutput;
 import sso.demo.converter.UserConverter;
-import sso.demo.enums.ResponseCodeEnum;
+import sso.demo.consts.enums.ResponseCodeEnum;
 import sso.demo.repository.UserRepository;
 import sso.demo.utils.IDUtil;
 import sso.demo.utils.RedisUtil;

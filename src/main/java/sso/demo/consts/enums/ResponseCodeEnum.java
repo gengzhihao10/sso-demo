@@ -1,4 +1,4 @@
-package sso.demo.enums;
+package sso.demo.consts.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

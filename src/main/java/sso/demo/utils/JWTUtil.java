@@ -52,10 +52,15 @@ public class JWTUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.SECOND,expiration);
         JwtBuilder builder = Jwts.builder()
+                //公有部分
                 .setHeaderParam("typ","JWT")
+                //私有信息
                 .setSubject(userId+"")
+                //签发日期
                 .setIssuedAt(new Date())
+                //过期时间
                 .setExpiration(calendar.getTime())
+                //加密算法和密钥
                 .signWith(SignatureAlgorithm.HS256,SECRET);
         return builder.compact();
     }

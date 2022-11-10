@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import sso.demo.enums.ResponseCodeEnum;
+import sso.demo.consts.enums.ResponseCodeEnum;
 
 import java.io.Serializable;
 
