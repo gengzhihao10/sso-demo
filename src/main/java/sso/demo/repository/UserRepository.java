@@ -15,4 +15,6 @@ import java.util.List;
 public interface UserRepository extends IService<UserDO> {
 
     List<UserDO> queryUserByNameAndSecret(String userName, String passWord);
+
+    UserDO queryUserByIdAndName(Long id, String userName);
 }

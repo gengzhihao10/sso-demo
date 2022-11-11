@@ -17,12 +17,22 @@ public class UserRepositoryImpl extends ServiceImpl<UserMapper, UserDO> implemen
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public List<UserDO> queryUserByNameAndSecret(String userName, String passWord) {
         LambdaQueryWrapper<UserDO> wrapper = Wrappers.lambdaQuery();
         wrapper.eq(UserDO::getUsername,userName);
         wrapper.eq(UserDO::getPassword,passWord);
-        List<UserDO> userDOS = userMapper.selectList(wrapper);
-        return userDOS;
+        return userMapper.selectList(wrapper);
+    }
+
+    @Override
+    public UserDO queryUserByIdAndName(Long id, String userName) {
+        LambdaQueryWrapper<UserDO> wrapper = Wrappers.lambdaQuery();
+        wrapper.eq(UserDO::getId,id);
+        wrapper.eq(UserDO::getUsername,userName);
+        return userRepository.getOne(wrapper);
     }
 }
