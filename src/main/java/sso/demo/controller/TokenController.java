@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sso.demo.api.base.RestResponse;
 import sso.demo.api.token.input.RestTokenCommand;
-import sso.demo.api.token.output.TokenCheckOutput;
 import sso.demo.api.token.output.TokenCommandOutput;
-import sso.demo.api.user.input.RestUserCommand;
-import sso.demo.api.user.output.UserCommandOutput;
 import sso.demo.consts.enums.ResponseCodeEnum;
 import sso.demo.service.TokenService;
 

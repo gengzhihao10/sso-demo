@@ -10,10 +10,8 @@ import org.springframework.stereotype.Component;
 import sso.demo.DO.UserDO;
 import sso.demo.api.base.RestResponse;
 import sso.demo.api.token.input.RestTokenCommand;
-import sso.demo.api.token.output.TokenCheckOutput;
 import sso.demo.api.token.output.TokenCommandOutput;
 import sso.demo.api.token.output.param.UserInfoParam;
-import sso.demo.consts.RedisConsts;
 import sso.demo.consts.enums.ResponseCodeEnum;
 import sso.demo.converter.UserConverter;
 import sso.demo.repository.UserRepository;
@@ -22,9 +20,7 @@ import sso.demo.utils.JsonUtil;
 import sso.demo.utils.RedisUtil;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
