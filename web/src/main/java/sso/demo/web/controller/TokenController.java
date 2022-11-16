@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sso.demo.api.base.RestResponse;
+import sso.demo.api.interfaces.TokenApiService;
 import sso.demo.api.token.input.RestTokenCommand;
 import sso.demo.api.token.output.TokenCommandOutput;
 import sso.demo.api.consts.enums.ResponseCodeEnum;
@@ -20,24 +21,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-@Api(value = "token操作接口")
-@RequestMapping("/token")
+
 @RestController
 @Slf4j
-public class TokenController {
+public class TokenController implements TokenApiService {
 
     @Autowired
     private TokenService tokenService;
 
 
-    @ApiOperation(value = "生成token")
-    @PostMapping("/generate")
+    @Override
     public RestResponse<TokenCommandOutput> generateToken(@RequestBody RestTokenCommand restTokenCommand) {
         return tokenService.generateToken(restTokenCommand);
     }
 
-    @ApiOperation(value = "校验token")
-    @PostMapping("/check")
+    @Override
     public RestResponse<ResponseCodeEnum> checkToken(@RequestBody Object object, HttpServletRequest request, HttpServletResponse response) {
 
         //获取token
