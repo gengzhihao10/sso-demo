@@ -9,10 +9,9 @@ import sso.demo.api.user.input.RestUserCommand;
 import sso.demo.api.user.output.UserCommandOutput;
 
 @Api(value = "用户操作接口")
-@RequestMapping("/user")
 public interface UserApiService {
 
     @ApiOperation(value = "新增用户")
-    @PostMapping("/insert")
+    @PostMapping("/user/insert")
     SSOResponse<UserCommandOutput> insertUser(RestUserCommand restUserCommand);
 }
