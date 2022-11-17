@@ -3,7 +3,7 @@ package sso.demo.web.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sso.demo.api.base.RestResponse;
+import sso.demo.api.base.SSOResponse;
 import sso.demo.api.consts.enums.ResponseCodeEnum;
 import sso.demo.api.user.input.RestUserCommand;
 import sso.demo.api.user.output.UserCommandOutput;
@@ -28,7 +28,7 @@ public class UserServcie {
     @Autowired
     private RedisUtil redisUtil;
 
-    public RestResponse<UserCommandOutput> insertUser(RestUserCommand restUserCommand){
+    public SSOResponse<UserCommandOutput> insertUser(RestUserCommand restUserCommand){
 
         UserDO userDO = userConverter.convert(restUserCommand);
 
@@ -41,9 +41,9 @@ public class UserServcie {
         boolean result = userRepository.save(userDO);
         if (!result){
             log.error("新增用户信息失败，用户名为 {}", userDO.getUsername());
-            return RestResponse.fail(ResponseCodeEnum.FAILED);
+            return SSOResponse.fail(ResponseCodeEnum.FAILED);
         }
-        return RestResponse.ok();
+        return SSOResponse.ok();
     }
 
 }

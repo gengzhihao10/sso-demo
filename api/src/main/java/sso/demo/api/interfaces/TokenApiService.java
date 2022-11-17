@@ -1,28 +1,30 @@
 package sso.demo.api.interfaces;
 
-import cn.hutool.core.util.ObjectUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import sso.demo.api.base.RestResponse;
+import sso.demo.api.base.SSOResponse;
 import sso.demo.api.consts.enums.ResponseCodeEnum;
 import sso.demo.api.token.input.RestTokenCommand;
 import sso.demo.api.token.output.TokenCommandOutput;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+
+/**
+ * feignClient继承此api后，与@RequestMapping冲突。因此类上不标注@RequestMapping，而将uri放在方法上
+ * 考虑到依赖sso的应用可能会对feignClient传入自定义的configuration，因此sso不提供统一的feignClient，由集成sso的系统自己继承此接口自行实现
+ */
 @Api(value = "token操作接口")
-@RequestMapping("/token")
 public interface TokenApiService {
 
     @ApiOperation(value = "生成token")
-    @PostMapping("/generate")
-    RestResponse<TokenCommandOutput> generateToken(RestTokenCommand restTokenCommand);
+    @PostMapping("/token/generate")
+    SSOResponse<TokenCommandOutput> generateToken(@RequestBody RestTokenCommand restTokenCommand);
 
     @ApiOperation(value = "校验token")
-    @PostMapping("/check")
-    RestResponse<ResponseCodeEnum> checkToken(Object object, HttpServletRequest request, HttpServletResponse response);
+    @PostMapping("/token/check")
+    //feignClient继承此api后，方法签名只能有一个参数，因此此方法的参数可以通过HttpServletRequest来获取token，也可以通过实体来传输token
+    SSOResponse<ResponseCodeEnum> checkToken(HttpServletRequest request);
 }
