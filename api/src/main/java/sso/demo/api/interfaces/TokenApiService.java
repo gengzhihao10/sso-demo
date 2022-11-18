@@ -6,7 +6,8 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import sso.demo.api.base.SSOResponse;
 import sso.demo.api.consts.enums.SSOResponseCodeEnum;
-import sso.demo.api.token.input.RestTokenCommand;
+import sso.demo.api.token.input.RestCheckTokenCommand;
+import sso.demo.api.token.input.RestGenerateTokenCommand;
 import sso.demo.api.token.output.TokenCommandOutput;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,10 @@ public interface TokenApiService {
 
     @ApiOperation(value = "生成token")
     @PostMapping("/token/generate")
-    SSOResponse<TokenCommandOutput> generateToken(@RequestBody RestTokenCommand restTokenCommand);
+    SSOResponse<TokenCommandOutput> generateToken(RestGenerateTokenCommand restGenerateTokenCommand);
 
     @ApiOperation(value = "校验token")
     @PostMapping("/token/check")
     //feignClient继承此api后，方法签名只能有一个参数，因此此方法的参数可以通过HttpServletRequest来获取token，也可以通过实体来传输token
-    SSOResponse<SSOResponseCodeEnum> checkToken(HttpServletRequest request);
+    SSOResponse<SSOResponseCodeEnum> checkToken(RestCheckTokenCommand restCheckTokenCommand);
 }

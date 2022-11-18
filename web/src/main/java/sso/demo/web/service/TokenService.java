@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import sso.demo.api.base.SSOResponse;
 import sso.demo.api.consts.enums.SSOResponseCodeEnum;
-import sso.demo.api.token.input.RestTokenCommand;
+import sso.demo.api.token.input.RestGenerateTokenCommand;
 import sso.demo.api.token.output.TokenCommandOutput;
 import sso.demo.api.token.output.param.UserInfoParam;
 import sso.demo.api.utils.JWTUtil;
@@ -43,16 +43,16 @@ public class TokenService {
     private UserRepository userRepository;
 
 
-    public SSOResponse<TokenCommandOutput> generateToken(RestTokenCommand restTokenCommand){
-        List<UserDO> userDOS = userRepository.queryUserByNameAndSecret(restTokenCommand.getUsername(),restTokenCommand.getPassword());
+    public SSOResponse<TokenCommandOutput> generateToken(RestGenerateTokenCommand restGenerateTokenCommand){
+        List<UserDO> userDOS = userRepository.queryUserByNameAndSecret(restGenerateTokenCommand.getUsername(), restGenerateTokenCommand.getPassword());
         //查不到用户，说明没有注册
         if (CollectionUtils.isEmpty(userDOS)){
-            log.info("没有此用户，无法获取token，用户名为 {}",restTokenCommand.getUsername());
+            log.info("没有此用户，无法获取token，用户名为 {}", restGenerateTokenCommand.getUsername());
             return SSOResponse.fail(SSOResponseCodeEnum.USER_IS_NOT_EXIST);
         }
         //查出多个用户，说明数据有问题
         if (userDOS.size() > 1){
-            log.error("查出用户为多个，无法获取token，用户名为 {}",restTokenCommand.getUsername());
+            log.error("查出用户为多个，无法获取token，用户名为 {}", restGenerateTokenCommand.getUsername());
             return  SSOResponse.fail(SSOResponseCodeEnum.USER_DATA_WRONG);
         }
 

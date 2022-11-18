@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import sso.demo.api.base.SSOBaseInput;
-import sso.demo.api.utils.InputCheckUtil;
 
 import java.io.Serializable;
 
@@ -18,26 +17,23 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestTokenCommand  extends SSOBaseInput implements Serializable {
-
-
-    private static final long serialVersionUID = -1042243831234064731L;
+public class RestCheckTokenCommand extends SSOBaseInput implements Serializable {
+    private static final long serialVersionUID = -1781108417298960801L;
 
     /**
      * 用户名
      */
     @ApiModelProperty("用户名")
-    private String username;
+    private String userName;
 
     /**
-     * 密码
+     * 用户名
      */
-    @ApiModelProperty("密码")
-    private String password;
+    @ApiModelProperty("用户登陆凭证")
+    private String token;
 
     @Override
     public void check() {
-        InputCheckUtil.checkInput(username,"用户名不能为空");
-        InputCheckUtil.checkInput(password,"密码不能为空");
+
     }
 }
