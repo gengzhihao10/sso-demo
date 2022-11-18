@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @description 一般入参顶层基类
 **/
 
-public abstract class BaseInput implements Serializable {
+public abstract class SSOBaseInput implements Serializable {
 
     private static final long serialVersionUID = -8108503875487739539L;
 

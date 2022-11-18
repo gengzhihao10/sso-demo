@@ -13,7 +13,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum DeleteYnEnum {
+public enum SSODeleteYnEnum {
 
     //枚举
     NORMAL(0,"未删除"),

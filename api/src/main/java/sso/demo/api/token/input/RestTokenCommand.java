@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import sso.demo.api.base.BaseInput;
+import sso.demo.api.base.SSOBaseInput;
 import sso.demo.api.utils.InputCheckUtil;
 
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestTokenCommand  extends BaseInput implements Serializable {
+public class RestTokenCommand  extends SSOBaseInput implements Serializable {
 
 
     private static final long serialVersionUID = -1042243831234064731L;

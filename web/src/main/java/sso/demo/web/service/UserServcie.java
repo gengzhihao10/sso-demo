@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sso.demo.api.base.SSOResponse;
-import sso.demo.api.consts.enums.ResponseCodeEnum;
+import sso.demo.api.consts.enums.SSOResponseCodeEnum;
 import sso.demo.api.user.input.RestUserCommand;
 import sso.demo.api.user.output.UserCommandOutput;
 import sso.demo.api.utils.IDUtil;
@@ -41,7 +41,7 @@ public class UserServcie {
         boolean result = userRepository.save(userDO);
         if (!result){
             log.error("新增用户信息失败，用户名为 {}", userDO.getUsername());
-            return SSOResponse.fail(ResponseCodeEnum.FAILED);
+            return SSOResponse.fail(SSOResponseCodeEnum.FAILED);
         }
         return SSOResponse.ok();
     }

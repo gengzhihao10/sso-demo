@@ -15,9 +15,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ApiModel("分页入参基类")
-public abstract class BasePageInput extends BaseInput {
+public abstract class SSOBasePageInput extends SSOBaseInput {
 
     @ApiModelProperty("分页参数")
-    private PageParam pageParam;
+    private SSOPageParam SSOPageParam;
 
 }

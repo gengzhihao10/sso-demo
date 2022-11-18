@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import sso.demo.api.consts.enums.ResponseCodeEnum;
+import sso.demo.api.consts.enums.SSOResponseCodeEnum;
 
 import java.io.Serializable;
 
@@ -45,12 +45,12 @@ public class SSOResponse<T> implements Serializable {
     }
 
     public static <T> SSOResponse<T> ok(){
-        return new SSOResponse<>(ResponseCodeEnum.SUCCESS.getCode(),ResponseCodeEnum.SUCCESS.getDesc());
+        return new SSOResponse<>(SSOResponseCodeEnum.SUCCESS.getCode(), SSOResponseCodeEnum.SUCCESS.getDesc());
     }
     public static <T> SSOResponse<T> ok(T data){
-        return new SSOResponse<>(ResponseCodeEnum.SUCCESS.getCode(),ResponseCodeEnum.SUCCESS.getDesc(),data);
+        return new SSOResponse<>(SSOResponseCodeEnum.SUCCESS.getCode(), SSOResponseCodeEnum.SUCCESS.getDesc(),data);
     }
-    public static <T> SSOResponse<T> fail(ResponseCodeEnum responseCodeEnum ){
-        return new SSOResponse<>(responseCodeEnum.getCode(),responseCodeEnum.getDesc());
+    public static <T> SSOResponse<T> fail(SSOResponseCodeEnum SSOResponseCodeEnum){
+        return new SSOResponse<>(SSOResponseCodeEnum.getCode(), SSOResponseCodeEnum.getDesc());
     }
 }

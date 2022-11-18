@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ApiModel("分页参数")
-public class PageParam {
+public class SSOPageParam {
 
     @ApiModelProperty("页容量")
     private int size;

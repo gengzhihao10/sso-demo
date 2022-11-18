@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum ResponseCodeEnum {
+public enum SSOResponseCodeEnum {
 
     //枚举
     SUCCESS(0,"成功"),

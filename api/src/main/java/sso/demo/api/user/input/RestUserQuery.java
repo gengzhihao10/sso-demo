@@ -1,9 +1,9 @@
 package sso.demo.api.user.input;
 
 
-import sso.demo.api.base.BaseInput;
+import sso.demo.api.base.SSOBaseInput;
 
-public class RestUserQuery extends BaseInput {
+public class RestUserQuery extends SSOBaseInput {
 
     private Long id;
 
